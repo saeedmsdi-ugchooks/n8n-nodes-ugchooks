@@ -1,0 +1,44 @@
+{
+	"name": "UGCHooks posts from a product link",
+	"nodes": [
+		{
+			"parameters": {},
+			"id": "manual",
+			"name": "Manual Trigger",
+			"type": "n8n-nodes-base.manualTrigger",
+			"typeVersion": 1,
+			"position": [0, 0]
+		},
+		{
+			"parameters": {
+				"resource": "batch",
+				"operation": "create_batch",
+				"create_batch__url": "https://example.com"
+			},
+			"id": "create",
+			"name": "Create batch",
+			"type": "n8n-nodes-ugchooks.ugcHooks",
+			"typeVersion": 1,
+			"position": [240, 0],
+			"credentials": {
+				"ugcHooksOAuth2Api": {
+					"id": "",
+					"name": "UGCHooks account"
+				}
+			}
+		}
+	],
+	"connections": {
+		"Manual Trigger": {
+			"main": [
+				[
+					{
+						"node": "Create batch",
+						"type": "main",
+						"index": 0
+					}
+				]
+			]
+		}
+	}
+}

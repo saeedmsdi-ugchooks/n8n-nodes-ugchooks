@@ -1,0 +1,22 @@
+{
+	"get_profile": {
+		"method": "GET",
+		"path": "/v1/account"
+	},
+	"list_batches": {
+		"method": "GET",
+		"path": "/v1/batches"
+	},
+	"get_batch": {
+		"method": "GET",
+		"path": "/v1/batches/:batchId"
+	},
+	"create_batch": {
+		"method": "POST",
+		"path": "/v1/batches"
+	},
+	"write_part": {
+		"method": "POST",
+		"path": "/v1/batches/:batchId/parts"
+	}
+}

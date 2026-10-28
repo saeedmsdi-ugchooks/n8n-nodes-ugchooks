@@ -1,0 +1,18 @@
+{
+	"node": "n8n-nodes-ugchooks.ugcHooks",
+	"nodeVersion": "1.0",
+	"codexVersion": "1.0",
+	"categories": ["Marketing & Content"],
+	"resources": {
+		"credentialDocumentation": [
+			{
+				"url": "https://github.com/saeedmsdi-ugchooks/n8n-nodes-ugchooks#authentication"
+			}
+		],
+		"primaryDocumentation": [
+			{
+				"url": "https://ugchooks.app/integrations/n8n/"
+			}
+		]
+	}
+}

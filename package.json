@@ -1,0 +1,65 @@
+{
+	"name": "n8n-nodes-ugchooks",
+	"version": "1.0.0",
+	"description": "Turn product links into TikTok and Reels posts with the UGCHooks REST API: create batches, read hooks, captions, hashtags and render links.",
+	"license": "MIT",
+	"homepage": "https://ugchooks.app/integrations/n8n/",
+	"keywords": [
+		"n8n-community-node-package",
+		"n8n",
+		"ugchooks",
+		"ugc",
+		"tiktok",
+		"instagram-reels",
+		"oauth",
+		"automation"
+	],
+	"author": {
+		"name": "UGCHooks",
+		"url": "https://ugchooks.app",
+		"email": "saeedmshdi@gmail.com"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/saeedmsdi-ugchooks/n8n-nodes-ugchooks.git"
+	},
+	"bugs": {
+		"url": "https://github.com/saeedmsdi-ugchooks/n8n-nodes-ugchooks/issues"
+	},
+	"scripts": {
+		"build": "n8n-node build",
+		"dev": "n8n-node dev",
+		"lint": "n8n-node lint && eslint . --max-warnings=0",
+		"lint:fix": "n8n-node lint --fix",
+		"test": "npm run build && node --test tests/*.test.cjs",
+		"prepublishOnly": "npm test && npm run review",
+		"format": "prettier --write .",
+		"format:check": "prettier --check .",
+		"review": "npm run format:check && npm run lint && node scripts/review.mjs"
+	},
+	"files": [
+		"dist",
+		"examples"
+	],
+	"n8n": {
+		"n8nNodesApiVersion": 1,
+		"strict": true,
+		"credentials": [
+			"dist/credentials/UgcHooksOAuth2Api.credentials.js"
+		],
+		"nodes": [
+			"dist/nodes/UgcHooks/UgcHooks.node.js"
+		]
+	},
+	"devDependencies": {
+		"@n8n/node-cli": "0.51.4",
+		"typescript": "5.9.2",
+		"eslint": "9.32.0",
+		"prettier": "3.6.2",
+		"@types/node": "22.19.15",
+		"@n8n/scan-community-package": "0.38.0"
+	},
+	"peerDependencies": {
+		"n8n-workflow": "*"
+	}
+}

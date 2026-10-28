@@ -1,0 +1,119 @@
+[
+	{
+		"name": "create_batch",
+		"title": "Create a batch from a product link",
+		"description": "Read a public product, website or app store page and write a brief plus the first 10 posts (part 0) in your account. Free, up to 20 links a day. Does not spend credits; open the app link to unlock all 100 posts and render the files.",
+		"inputSchema": {
+			"type": "object",
+			"properties": {
+				"url": {
+					"type": "string",
+					"minLength": 4,
+					"maxLength": 500,
+					"description": "Public product, website or App Store / Google Play link"
+				}
+			},
+			"required": ["url"],
+			"additionalProperties": false,
+			"$schema": "http://json-schema.org/draft-07/schema#"
+		},
+		"annotations": {
+			"title": "Create a batch from a product link",
+			"readOnlyHint": false,
+			"destructiveHint": false,
+			"idempotentHint": false,
+			"openWorldHint": true
+		}
+	},
+	{
+		"name": "get_batch",
+		"title": "Read a post batch",
+		"description": "Read one of your batches: the product brief, every written part with its posts (slideshow slides, reaction-hook beats, meme captions, plus caption and hashtags for each), which parts are locked, product image links and the public links of renders you saved in the app.",
+		"inputSchema": {
+			"type": "object",
+			"properties": {
+				"batchId": {
+					"type": "string",
+					"pattern": "^[A-Za-z0-9_-]{16,40}$",
+					"description": "Batch id from list_batches or create_batch"
+				}
+			},
+			"required": ["batchId"],
+			"additionalProperties": false,
+			"$schema": "http://json-schema.org/draft-07/schema#"
+		},
+		"annotations": {
+			"title": "Read a post batch",
+			"readOnlyHint": true,
+			"destructiveHint": false,
+			"idempotentHint": true,
+			"openWorldHint": false
+		}
+	},
+	{
+		"name": "get_profile",
+		"title": "Read your UGCHooks profile",
+		"description": "Read the signed-in customer's own UGCHooks account profile. Does not search for or identify other people.",
+		"inputSchema": {
+			"type": "object",
+			"properties": {},
+			"additionalProperties": false
+		},
+		"annotations": {
+			"title": "Read your UGCHooks profile",
+			"readOnlyHint": true,
+			"destructiveHint": false,
+			"idempotentHint": true,
+			"openWorldHint": false
+		}
+	},
+	{
+		"name": "list_batches",
+		"title": "List your post batches",
+		"description": "List your newest 100 UGCHooks batches (one per product link) with product name, host, whether all 100 posts are unlocked and an app link.",
+		"inputSchema": {
+			"type": "object",
+			"properties": {},
+			"additionalProperties": false,
+			"$schema": "http://json-schema.org/draft-07/schema#"
+		},
+		"annotations": {
+			"title": "List your post batches",
+			"readOnlyHint": true,
+			"destructiveHint": false,
+			"idempotentHint": true,
+			"openWorldHint": false
+		}
+	},
+	{
+		"name": "write_part",
+		"title": "Write a part of a batch",
+		"description": "Write (or re-read) part 0 to 9 of one of your batches: 10 posts each. Parts 1 to 9 need the batch to be unlocked in the app first. Already written parts are returned unchanged.",
+		"inputSchema": {
+			"type": "object",
+			"properties": {
+				"batchId": {
+					"type": "string",
+					"pattern": "^[A-Za-z0-9_-]{16,40}$",
+					"description": "Batch id from list_batches or create_batch"
+				},
+				"part": {
+					"type": "integer",
+					"minimum": 0,
+					"maximum": 9,
+					"description": "Part number, 0 to 9"
+				}
+			},
+			"required": ["batchId", "part"],
+			"additionalProperties": false,
+			"$schema": "http://json-schema.org/draft-07/schema#"
+		},
+		"annotations": {
+			"title": "Write a part of a batch",
+			"readOnlyHint": false,
+			"destructiveHint": false,
+			"idempotentHint": false,
+			"openWorldHint": false
+		}
+	}
+]
